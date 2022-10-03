@@ -5,15 +5,20 @@
     <title>Coding Events</title>
 
     <script th:src="@{/script.js}"></script>
-    <link th:href="@{/styles.css}" rel="stylesheet">
+    <link th:href="@{/styles.css}" rel="stylesheet"/>
 
 </head>
 <body>
 
 <nav th:fragment="navigation">
     <ul>
-        <li><a href="/events">All Events</a></li>
-        <li><a href="/events/create">Create Event</a></li>
+        <li>
+            <a href="/events">All Events</a>
+        </li>
+
+        <li>
+            <a href="/events/create">Create Event</a>
+        </li>
     </ul>
 </nav>
 
