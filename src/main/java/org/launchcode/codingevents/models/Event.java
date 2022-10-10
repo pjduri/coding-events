@@ -26,16 +26,22 @@ public class Event {
     @NotEmpty(message = "Location is required.")
     private String eventLocation;
 
+    @Min(value = 1, message = "Must have at least 1 guest")
+    private int expectedNumGuests;
+
     @AssertTrue(message = "All events must require registration.")
     private boolean mustRegister;
 
-    public Event(String name, String description, String contactEmail, String contactPhone, String eventLocation, boolean mustRegister) {
+    public Event(String name, String description, String contactEmail,
+                 String contactPhone, String eventLocation,
+                 int expectedNumGuests, boolean mustRegister) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.contactPhone = contactPhone;
         this.eventLocation = eventLocation;
+        this.expectedNumGuests = expectedNumGuests;
         this.mustRegister = mustRegister;
     }
 
@@ -82,6 +88,14 @@ public class Event {
 
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
+    }
+
+    public int getExpectedNumGuests() {
+        return expectedNumGuests;
+    }
+
+    public void setExpectedNumGuests(int expectedNumGuests) {
+        this.expectedNumGuests = expectedNumGuests;
     }
 
     public boolean getMustRegister() {

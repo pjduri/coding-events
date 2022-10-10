@@ -18,6 +18,7 @@
         <th>Contact Email</th>
         <th>Contact Phone</th>
         <th>Event Location</th>
+        <th>Expected Number of Guests</th>
         <th>Registration Required?</th>
     </tr>
     </thead>
@@ -28,6 +29,7 @@
         <td th:text="${event.contactEmail}"></td>
         <td th:text="${event.contactPhone}"></td>
         <td th:text="${event.eventLocation}"></td>
+        <td th:text="${event.expectedNumGuests}"></td>
         <td th:text="${event.mustRegister}"></td>
     </tr>
 </table>
