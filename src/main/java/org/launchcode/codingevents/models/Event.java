@@ -19,17 +19,22 @@ public class Event {
     @Email(message = "Invalid email, please try again.")
     private String contactEmail;
 
+    @NotEmpty(message = "Contact phone number is required.")
+    @Pattern(regexp="[0-9]{3}-[0-9]{3}-[0-9]{4}")
+    private String contactPhone;
+
     @NotEmpty(message = "Location is required.")
     private String eventLocation;
 
     @AssertTrue(message = "All events must require registration.")
     private boolean mustRegister;
 
-    public Event(String name, String description, String contactEmail, String eventLocation, boolean mustRegister) {
+    public Event(String name, String description, String contactEmail, String contactPhone, String eventLocation, boolean mustRegister) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.contactPhone = contactPhone;
         this.eventLocation = eventLocation;
         this.mustRegister = mustRegister;
     }
@@ -61,6 +66,14 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public String getContactPhone() {
+        return contactPhone;
+    }
+
+    public void setContactPhone(String contactPhone) {
+        this.contactPhone = contactPhone;
     }
 
     public String getEventLocation() {

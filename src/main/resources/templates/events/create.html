@@ -30,6 +30,13 @@
     </div>
 
     <div class="form-group">
+        <label>Contact Phone
+        <input type="tel" th:field="${event.contactPhone}" class="form-control">
+        </label>
+        <p class="error" th:errors="${event.contactPhone}"></p>
+    </div>
+
+    <div class="form-group">
         <label>Event Location
         <input type="text" th:field="${event.eventLocation}" class="form-control">
         </label>
