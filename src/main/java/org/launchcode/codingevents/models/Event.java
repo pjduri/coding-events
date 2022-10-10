@@ -22,12 +22,16 @@ public class Event {
     @NotEmpty(message = "Location is required.")
     private String eventLocation;
 
-    public Event(String name, String description, String contactEmail, String eventLocation) {
+    @AssertTrue(message = "All events must require registration.")
+    private boolean mustRegister;
+
+    public Event(String name, String description, String contactEmail, String eventLocation, boolean mustRegister) {
         this();
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
         this.eventLocation = eventLocation;
+        this.mustRegister = mustRegister;
     }
 
     public Event() {
@@ -65,6 +69,14 @@ public class Event {
 
     public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
+    }
+
+    public boolean getMustRegister() {
+        return mustRegister;
+    }
+
+    public void setMustRegister(boolean mustRegister) {
+        this.mustRegister = mustRegister;
     }
 
     public int getId() {
