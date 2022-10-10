@@ -14,7 +14,7 @@ public class Event {
     @Size(min = 3, max = 50, message = "Name must beteen 3 and 50 characters.")
     private String name;
 
-    @Size(max = 500)
+    @Size(max = 500, message = "Description too long!")
     private String description;
 
     @Email(message = "Invalid email, please try again.")
