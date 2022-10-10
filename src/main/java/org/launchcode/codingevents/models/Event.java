@@ -9,6 +9,7 @@ public class Event {
 
     private int id;
     private static int nextId =1;
+    private EventType type;
 
     @NotBlank(message = "Name is required.")
     @Size(min = 3, max = 50, message = "Name must between 3 and 50 characters.")
@@ -21,10 +22,11 @@ public class Event {
     @Email(message = "Invalid email, please try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    public Event(String name, String description, String contactEmail, EventType type) {
         this.name = name;
         this.description = description;
         this.contactEmail = contactEmail;
+        this.type = type;
         this.id = nextId;
         nextId++;
     }
@@ -53,6 +55,14 @@ public class Event {
 
     public void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public EventType getType() {
+        return type;
+    }
+
+    public void setType(EventType type) {
+        this.type = type;
     }
 
     public int getId() {
