@@ -1,6 +1,6 @@
 plugins {
-	id 'org.springframework.boot' version '2.4.4'
-	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'org.springframework.boot' version '2.7.4'
+	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
 	id 'java'
 }
 
@@ -8,37 +8,29 @@ group = 'org.launchcode'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
-configurations {
-	developmentOnly
-	runtimeClasspath {
-		extendsFrom developmentOnly
-	}
-}
-
 repositories {
 	mavenCentral()
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'mysql:mysql-connector-java'
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
+tasks.named('test') {
 	useJUnitPlatform()
 }
 
 
+// this is copied from LaunchCode's repo for this part of the exercises and studios.  both seem to work.
 //plugins {
-//	id 'org.springframework.boot' version '2.7.4'
-//	id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+//	id 'org.springframework.boot' version '2.4.4'
+//	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 //	id 'java'
 //}
 //
@@ -46,20 +38,29 @@ test {
 //version = '0.0.1-SNAPSHOT'
 //sourceCompatibility = '11'
 //
+//configurations {
+//	developmentOnly
+//	runtimeClasspath {
+//		extendsFrom developmentOnly
+//	}
+//}
+//
 //repositories {
 //	mavenCentral()
 //}
 //
 //dependencies {
 //	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-//	implementation 'org.springframework.boot:spring-boot-starter-validation'
 //	implementation 'org.springframework.boot:spring-boot-starter-web'
 //	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 //	implementation 'mysql:mysql-connector-java'
+//	implementation 'org.springframework.boot:spring-boot-starter-validation'
 //	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+//		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+//	}
 //}
 //
-//tasks.named('test') {
+//test {
 //	useJUnitPlatform()
 //}
