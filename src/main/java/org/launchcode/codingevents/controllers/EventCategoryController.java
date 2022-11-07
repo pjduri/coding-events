@@ -21,7 +21,7 @@ public class EventCategoryController {
     private EventCategoryRepository eventCategoryRepository;
 
     @GetMapping
-    public String displayAllEvents (Model model) {
+    public String displayCategories(Model model) {
         model.addAttribute("title", "All Categories");
         model.addAttribute("categories", eventCategoryRepository.findAll());
         return "eventCategories/index";
@@ -39,12 +39,10 @@ public class EventCategoryController {
                                                  Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Create Category");
-            model.addAttribute(new EventCategory());
             return "eventCategories/create";
         }
         eventCategoryRepository.save(newEventCategory);
         return "redirect:";
-
     }
 
 }
