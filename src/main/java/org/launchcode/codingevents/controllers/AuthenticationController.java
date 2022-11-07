@@ -3,6 +3,7 @@ package org.launchcode.codingevents.controllers;
 
 import org.launchcode.codingevents.data.UserRepository;
 import org.launchcode.codingevents.models.User;
+import org.launchcode.codingevents.models.dto.LoginFormDTO;
 import org.launchcode.codingevents.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -90,10 +91,39 @@ public class AuthenticationController {
 
     @GetMapping("login")
     public String displayLoginForm(Model model) {
-        model.addAttribute("title", "Login");
+        model.addAttribute("title", "Log In");
+        model.addAttribute(new LoginFormDTO());
         return "login";
     }
 
+    @PostMapping("login")
+    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
+                                   Errors errors,
+                                   HttpServletRequest request,
+                                   Model model) {
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
 
+        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
+
+        if (theUser == null) {
+            errors.rejectValue("username", "username.invalid", "No such username exists");
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
+        String password = loginFormDTO.getPassword();
+
+        if (!theUser.isMatchingPassword(password)) {
+            errors.rejectValue("password", "password.invalid", "Invalid Password");
+            model.addAttribute("title", "Log In");
+            return "login";
+        }
+
+        setUserInSession(request.getSession(), theUser);
+        return "redirect:";
+    }
 
 }
