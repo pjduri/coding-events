@@ -18,6 +18,7 @@ TODOS:
 
   - Embed links in the tag lists - make the listed tags in each event contain links as well
   - Refactor tag controller to manage errors more effectively
+  - Add delete pages for categories and tags
   - Add a Person class to store information about the app's users
   
 PERSON CLASS:
