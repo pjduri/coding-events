@@ -1,6 +1,6 @@
 package org.launchcode.codingevents.models.dto;
 
-public class RegistrationFormDTO extends LoginFormDTO {
+public class RegisterFormDTO extends LoginFormDTO {
 
     private String verifyPassword;
 

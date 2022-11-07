@@ -3,7 +3,7 @@ package org.launchcode.codingevents.controllers;
 
 import org.launchcode.codingevents.data.UserRepository;
 import org.launchcode.codingevents.models.User;
-import org.launchcode.codingevents.models.dto.RegistrationFormDTO;
+import org.launchcode.codingevents.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,7 +43,7 @@ public class AuthenticationController {
     @GetMapping("register")
     public String displayRegistrationForm (Model model) {
         model.addAttribute("title", "Register");
-        model.addAttribute(new RegistrationFormDTO());
+        model.addAttribute(new RegisterFormDTO());
         return "register";
     }
 
