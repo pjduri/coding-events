@@ -10,12 +10,12 @@
 <table class="table">
     <thead>
     <tr>
-        <th>Category</th>
+        <th>Tags</th>
     </tr>
     </thead>
-    <tr th:each="category : ${categories}">
+    <tr th:each="tag : ${tags}">
         <td>
-            <a th:href="'/events?categoryId=' + ${category.id}" th:text="${category.name}"></a>
+            <a th:text="${tag.displayName}"></a>
         </td>
     </tr>
 </table>

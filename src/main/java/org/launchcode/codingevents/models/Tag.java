@@ -21,6 +21,10 @@ public class Tag extends AbstractEntity {
         return name;
     }
 
+    public String getDisplayName() {
+        return "#" + name + " ";
+    }
+
     public void setName(String name) {
         this.name = name;
     }
